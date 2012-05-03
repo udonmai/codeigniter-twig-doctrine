@@ -37,7 +37,10 @@ class Doctrine {
 	//Metadata driver
 	$driverImpl = $config->newDefaultAnnotationDriver(array(APPPATH.'models/Entities'));
     $config->setMetadataDriverImpl($driverImpl);
-    
+    //set up Yaml driver
+	//$yamlDriver = new \Doctrine\ORM\Mapping\Driver\YamlDriver(APPPATH.'models/Mappings');
+	//$config->setMetadataDriverImpl($yamlDriver);
+
     // Proxy configuration
     $config->setProxyDir(APPPATH.'/models/Proxies');
     $config->setProxyNamespace('Proxies');
@@ -51,11 +54,7 @@ class Doctrine {
 	} else {
 		$config->setAutoGenerateProxyClasses(FALSE);
 	}
-	 
-	//set up annotation driver
-	//$yamlDriver = new \Doctrine\ORM\Mapping\Driver\YamlDriver(APPPATH.'models/Mappings');
-	//$config->setMetadataDriverImpl($yamlDriver);
-
+	
     // Database connection information
     $connectionOptions = array(
         'driver' => 'pdo_mysql',
